@@ -11,6 +11,3 @@ public
 # macOS related files
 .DS_Store
 
-
-# Local Netlify folder
-.netlify
