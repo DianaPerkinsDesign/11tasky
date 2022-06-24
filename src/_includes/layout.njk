@@ -1,0 +1,58 @@
+---
+site_title: Issues by line number
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ site_title }}</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐺</text></svg>">
+  </head>
+  <body>
+    <main>
+    <h1>{{ site_title }}</h1>
+    <h2>{{ repo }}</h2>
+    <div>{{ content | safe }}</div>
+
+    <ul class="each-file">
+      {% for fileName, fileIssues in issues | dictsort %}
+        <li>
+          <h2>{{ fileName }}</h2>
+          
+          {% for line, lineIssues in fileIssues | dictsort %}
+          <h3>L{{ line | replace(".", "") }}</h3>
+          <ul> 
+            {% for issue in lineIssues %}
+              <li>
+                <ul>
+                  <li class="single-issue">
+                    <div class="label-container">
+                      {% for label in issue.labels %}
+                          <strong
+                            class="bug-label L{{ label.color }}"
+                            style="background-color: #{{ label.color }}"
+                            title="{{ label.name }}"
+                            aria-label="{{ label.name }}"
+                          >
+                            <span class="label-char">{{label.name.slice(0, 1)}}</span>
+                            <span class="label-name"> {{label.name}}</span>
+                          </strong>
+                      {% endfor %}
+                    </div>
+                    <a href="{{ issue.url }}">{{ issue.title }}</a>
+                  </li>
+                </ul>
+              <li>
+            {% endfor %}
+          </ul>
+          {% endfor %}
+        </li>
+      {% endfor %}
+    </ul>
+    </main>
+  </body>
+</html>

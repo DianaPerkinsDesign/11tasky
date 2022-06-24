@@ -1,4 +1,67 @@
+@import "./normalize.scss";
+
+$color-gray: #808a99;
+$color-gray-dark: #313a41;
+$color-gray-light: #c6cdd7;
+
+$color-orange: #ffa96b;
+$color-orange-dark: #ea680b;
+$color-flamingo: #f55aa5;
+$color-flamingo-dark: #da237b;
+$color-bubblegum: #d780ec;
+$color-bubblegum-dark: #bf3cde;
+$color-lavender: #9c80ec;
+$color-lavender-dark: #6f4fca;
+
+$color-background: #fff;
+$color-background-gray: #f7f7f9;
+
+$color-text-dark: #001e38;
+$color-text-light: #4a6d88;
+
 body {
   font-family: sans-serif;
-  background-color: #f9f9f9;
+  background-color: $color-background;
+}
+
+.wrapper {
+  $cool-color-bar-height: 10px;
+  max-width: 960px;
+  margin: $cool-color-bar-height auto 0;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: $cool-color-bar-height;
+    background: linear-gradient(
+      90deg,
+      $color-lavender 0%,
+      $color-lavender 25%,
+      $color-bubblegum 25%,
+      $color-bubblegum 50%,
+      $color-flamingo 50%,
+      $color-flamingo 75%,
+      $color-orange 75%,
+      $color-orange 100%
+    );
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.issues-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    border: 1px solid #c6cdd7;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
 }

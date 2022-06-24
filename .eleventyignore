@@ -1,0 +1,4 @@
+node_modules
+.env
+readme.md
+_data/rawGithubData.json
