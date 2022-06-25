@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       pull: "clone", // To clone: set pull to 'clone'
     },
     animation: 150,
-    filter: ".ignore-elements",
+    filter: ".no-sortable",
     store: {
       /**
        * Get the order of elements. Called once during initialization.
@@ -29,4 +29,34 @@ window.addEventListener("DOMContentLoaded", (event) => {
       },
     },
   });
+
+  document
+    .querySelectorAll("[data-behavior~=changeCompleteness]")
+    .forEach((item) => {
+      item.addEventListener("click", (event) => {
+        const button = event.currentTarget;
+        const issueId = button.closest("li").dataset.id;
+        console.log("Updating completeness:", button.dataset.amount, issueId);
+        button.classList.add("active");
+
+        const oldCompleteness = JSON.parse(
+          localStorage.getItem("completeness")
+        );
+        let newCompleteness = { ...oldCompleteness };
+        newCompleteness[issueId] = button.dataset.amount;
+
+        localStorage.setItem("completeness", JSON.stringify(newCompleteness));
+      });
+
+      // Grab the current completeness
+      const completeness = JSON.parse(localStorage.getItem("completeness"));
+
+      const issueId = item.closest("li").dataset.id;
+      if (
+        completeness[issueId] &&
+        completeness[issueId] === item.dataset.amount
+      ) {
+        item.classList.add("active");
+      }
+    });
 });
