@@ -1,29 +1,53 @@
 ---
 layout: base.njk
-title: Hello World
+title: 11tasky
+org: netlify
 ---
 
-<h1>All Issues</h1>
-<ul class="issues-list" id="issuesList">
-{% for issue in issues %}
-  <li data-id="{{ issue.id }}">
-    <div class="button-wrapper">
-      {% for prog in progress | reverse %}
-        <button 
-        class="level-{{prog.level}} no-sortable"
-        data-type="completeness"
-        data-amount="{{prog.level}}"
-        data-behavior="changeCompleteness"
-        >
-        
-        </button>
-      {% endfor %}
+{% set regExp = r/^(repos<=\repos).*/g %}
+{% if regExp.test('https://api.github.com/repos/netlify/docs/issues/2164') %}
+  Foo in the house!
+{% endif %}
+<div class="issues-wrapper">
+  <h1>All Issues</h1>
+  <ul class="issues-list" id="issuesList">
+    {% for issue in issues %}
+      <li data-id="{{ issue.id }}">
+        <div class="button-wrapper">
+          {% for prog in progress | reverse %}
+            <button class="level-{{ prog.level }} no-sortable" data-type="completeness" data-amount="{{ prog.level }}" data-behavior="changeCompleteness" aria-label="Set completeness to {{ prog.level }}"></button>
+          {% endfor %}
+        </div>
+        <div class="issue-title">
+          <h2>
+            <a href="{{ issue.html_url }}">{{ issue.title }}&nbsp;↗</a>
+          </h2>
+          <h3>{{ issue.repository.name }}</h3>
+        </div>
+      </li>
+    {% endfor %}
+    {% if not issues|length %}
+      <li class="blank-state">No issues 🌱<li>
+        {% endif %}
+      </ul>
     </div>
-    <div class="issue-title">
-      <h2><a href="{{ issue.html_url }}">{{ issue.title }}&nbsp;↗</a></h2>
-      <h3>{{ issue.repository.name }}</h3>
-    </div>
-    
-  </li>
-{% endfor %}
-</ul>
+    <div class="notifications-wrapper">
+      <h1>Notifications</h1>
+      <ul class="notifications-list" id="notificationsList">
+        {% for notification in notifications %}
+          {% if notification.repository.owner.login===org %}
+            <li data-id="{{ notification.id }}">
+              <p class="notification-reason">{{ notification.repository.name }} -
+              {{ notification.subject.type }}</p>
+              <h2>
+                <a href="https://github.com/notifications">{{ notification.subject.title }}&nbsp;↗</a>
+              </h2>
+              <h3>{{ notification.reason }}</h3>
+            </li>
+          {% endif %}
+        {% endfor %}
+        {% if not notifications|length %}
+          <li class="blank-state">No notifications 🌱<li>
+            {% endif %}
+          </ul>
+        </div>
