@@ -1,12 +1,4 @@
-![logo](https://repository-images.githubusercontent.com/302921248/58478900-0adf-11eb-8f0b-74be58a898ef)
 
-# 11ty Sass Skeleton
-
-Featuring absolutely nothing beyond a base HTML5 template and the essential setup to watch and compile your Sass alongside 11ty.
-
-Includes minifiying and autoprefixing of styles `postbuild`.
-
-<small>Created by [@5t3ph](https://twitter.com/5t3ph)</small>
 
 ## Development Scripts
 
@@ -31,3 +23,7 @@ Use this as the "Publish command" if needed by hosting such as Netlify.
 **Explore advanced setup of custom data** through my [tutorial on building a community site](https://css-tricks.com/a-community-driven-site-with-eleventy-building-the-site/)
 
 **For a more full-featured starter** check out my [11ty Netlify Jumpstart](https://11ty-netlify-jumpstart.netlify.app/) (also works for hosts other than Netlify).
+
+
+## Credits
+ - 11ty Sass Skeleton - Created by [@5t3ph](https://twitter.com/5t3ph)
