@@ -77,7 +77,8 @@ module.exports = async function handler(req, res) {
           "🍕🍕🍕 Grabbed from GitHub. Number of issues: ",
           Object.keys(allFreshIssues).length
         );
-        return allFreshIssues;
+        cachedData = allFreshIssues;
+        return cachedData;
       });
 
     // Write to cache file
@@ -89,7 +90,6 @@ module.exports = async function handler(req, res) {
       log(logcolor.fg.red, "ERROR WRITING CACHE TO FILE");
       console.log(error);
     }
-    cachedData = allIssues.data;
   }
 
   // return the cachedData
