@@ -79,6 +79,7 @@ a {
   }
 }
 main {
+  margin-top: $padding-double;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
@@ -217,9 +218,8 @@ header {
   h2 {
     padding: 0;
     margin: 0;
-    margin-bottom: $padding-third;
     font-size: 1.1em;
-    font-weight: normal;
+    font-weight: bold;
     color: $color-text-dark;
   }
 
@@ -268,8 +268,7 @@ header {
 
     h3 {
       font-weight: normal;
-      font-size: 0.8em;
-      font-style: italic;
+      font-size: 0.75em;
       margin-top: $padding-third;
       text-align: right;
       background: $color-background-gray;

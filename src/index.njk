@@ -37,12 +37,24 @@ org: netlify
         {% for notification in notifications %}
           {% if notification.repository.owner.login===org %}
             <li data-id="{{ notification.id }}">
-              <p class="notification-reason">{{ notification.repository.name }} -
-              {{ notification.subject.type }}</p>
+              <p class="notification-reason">
+                {% switch notification.subject.type %}
+                    {% case 'Issue' %}⊙ Issue {% case 'PullRequest' %}⎆ PR
+                  {% default %}
+                    {{ notification.subject.type }}
+                {% endswitch %}
+                - {{ notification.repository.name }}
+              </p>
               <h2>
                 <a href="https://github.com/notifications">{{ notification.subject.title }}&nbsp;↗</a>
               </h2>
-              <h3>{{ notification.reason }}</h3>
+              <h3>
+                {{ notification.reason }}
+                {% switch notification.reason %}
+                  {# https://docs.github.com/en/rest/activity/notifications#about-notification-reasons #}
+                  {% case 'mention' %}🗣 {% case 'assign' %}📥 {% case 'team_mention' %}👥 {% case 'author' %}✍️ {% case 'comment' %}💬
+                {% endswitch %}
+              </h3>
             </li>
           {% endif %}
         {% endfor %}
