@@ -6,13 +6,13 @@ title: Hello World
 <h1>All Issues</h1>
 <ul class="issues-list" id="issuesList">
 {% for issue in issues %}
-  <li data-id={{ issue.id }}>
+  <li data-id="{{ issue.id }}">
     <div class="button-wrapper">
       {% for prog in progress | reverse %}
         <button 
         class="level-{{prog.level}} no-sortable"
         data-type="completeness"
-        data-amount={{prog.level}}
+        data-amount="{{prog.level}}"
         data-behavior="changeCompleteness"
         >
         

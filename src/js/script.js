@@ -53,6 +53,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
       const issueId = item.closest("li").dataset.id;
       if (
+        completeness &&
         completeness[issueId] &&
         completeness[issueId] === item.dataset.amount
       ) {

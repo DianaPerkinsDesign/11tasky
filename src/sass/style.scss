@@ -127,12 +127,14 @@ header {
       background-color: white;
       border-color: $color-gray-light;
     }
-    .level-0 {
+    
+    .level-0:hover,
+    .level-0:hover ~ button,
+    .active.level-0,
+    .active.level-0 ~ button {
       border-bottom-width: 1px;
-      &:hover {
         background-color: lighten($color-gray-light, 10%);
       }
-    }
     .level-1:hover,
     .level-1:hover ~ button,
     .active.level-1,
