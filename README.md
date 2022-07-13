@@ -1,3 +1,7 @@
+## General note
+
+Don't deploy this publicly without securing it
+
 ## Getting Started
 
 1. Create a `.env` file, and fill it out following the example of `.env.sample`
