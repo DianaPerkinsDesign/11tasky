@@ -1,3 +1,14 @@
+## Getting Started
+
+1. Create a `.env` file, and fill it out following the example of `.env.sample`
+ - You will need a personal access token from GitHub
+ - Be sure to give your token full access to repos, and full read access to notifications and user stuff
+ 
+2. `npm i`
+
+3. `npm start`
+
+> Note: A cache file is created on build using fresh data from GitHub, and all data is pulled from the cache file. The cache file remains until manually deleted, so be sure to remove it before a build for fresh data. 
 
 
 ## Development Scripts
