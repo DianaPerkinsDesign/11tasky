@@ -1,4 +1,4 @@
-## General note
+## General Note
 
 Don't deploy this publicly without securing it
 
