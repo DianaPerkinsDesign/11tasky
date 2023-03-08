@@ -68,7 +68,7 @@ module.exports = async function handler(req, res) {
     console.log("🐈‍⬛ Fetching fresh issue data from GitHub...");
     const allIssues = await octokit.rest.issues
       .listForOrg({
-        org: "Netlify",
+        org: "Code-423n4",
       })
       .then((issues) => {
         let allFreshIssues = issues.data;
